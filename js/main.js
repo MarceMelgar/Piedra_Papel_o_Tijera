@@ -63,6 +63,19 @@ function iniciarTurno (e) {
         } else {
             empate();
         }
+        if (puntosJugador === 3 || puntosPC === 3) {
+            if (puntosJugador === 3) {
+                instrucciones.innerText = "Ganaste la partida, ¡Felicitaciones! 🤓"
+            }
+            if (puntosPC === 3) {
+                instrucciones.innerText = "Perdiste 😢"
+            }
+            instrucciones.classList.remove("ocultar")
+            elegirArma.classList.add("ocultar");
+            mensaje.classList.add("ocultar");
+            reiniciar.classList.remove("ocultar");
+            reiniciar.addEventListener("click", reiniciarJuego)
+        } 
         contenedorMensajeGano.add("ocultar");
     }, 2000)
 
@@ -71,19 +84,6 @@ function iniciarTurno (e) {
     contenedorEleccionJugador.innerText = eleccionJugador;
     contenedorEleccionPC.innerText = eleccionPC;
 
-    if (puntosJugador === 3 || puntosPC === 3) {
-        if (puntosJugador === 3) {
-            instrucciones.innerText = "Ganaste la partida, ¡Felicitaciones! 🤓"
-        }
-        if (puntosPC === 3) {
-            instrucciones.innerText = "Perdiste 😢"
-        }
-        instrucciones.classList.remove("ocultar")
-        elegirArma.classList.add("ocultar");
-        mensaje.classList.add("ocultar");
-        reiniciar.classList.remove("ocultar");
-        reiniciar.addEventListener("click", reiniciarJuego)
-    }
 }
 
 function ganaJugador() {
