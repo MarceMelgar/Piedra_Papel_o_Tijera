@@ -14,41 +14,60 @@ let contenedorEleccionJugador = document.querySelector ("#eleccion-jugador");
 let contenedorEleccionPC = document.querySelector ("#eleccion-computadora");
 
 let botonesArmas = document.querySelectorAll (".arma");
+
 botonesArmas.forEach(boton => {
     boton.addEventListener ("click", iniciarTurno);
 })
 
 function iniciarTurno (e) {
-    let eleccionPC = Math.floor(Math.random() * 3);
     let eleccionJugador = e.currentTarget.id;
-    
     imgJugador.src = "./images/" + eleccionJugador + ".png"; 
+    
+    const intervaloPC = setInterval(function() {
+        eleccionPC = Math.floor(Math.random() * 3);    
+        if (eleccionPC === 0) {
+            eleccionPC = "piedra"
+        } else if (eleccionPC === 1) {
+            eleccionPC = "papel"
+        } else if (eleccionPC === 2) {
+            eleccionPC = "tijera"
+        }
+        imgComputadora.src = "./images/" + eleccionPC + ".png";
+    }, 200);
 
-    if (eleccionPC === 0) {
-        eleccionPC = "piedra"
-    } else if (eleccionPC === 1) {
-        eleccionPC = "papel"
-    } else if (eleccionPC === 2) {
-        eleccionPC = "tijera"
-    }
+    setTimeout(function(){
+        clearInterval(intervaloPC);
+        let eleccionPC = Math.floor(Math.random() * 3);    
+        if (eleccionPC === 0) {
+            eleccionPC = "piedra"
+        } else if (eleccionPC === 1) {
+            eleccionPC = "papel"
+        } else if (eleccionPC === 2) {
+            eleccionPC = "tijera"
+        }
+        
+        imgComputadora.src = "./images/" + eleccionPC + ".png";
+        
+        if (
+        (eleccionJugador === "piedra" && eleccionPC === "tijera") || 
+        (eleccionJugador === "tijera" && eleccionPC === "papel") ||
+        (eleccionJugador === "papel" && eleccionPC === "piedra") 
+        ) {
+            ganaJugador();
+        } else if (
+            (eleccionPC === "piedra" && eleccionJugador === "tijera") || 
+            (eleccionPC === "tijera" && eleccionJugador === "papel") ||
+            (eleccionPC === "papel" && eleccionJugador === "piedra") 
+        ) {
+            ganaComputadora();
+        } else {
+            empate();
+        }
+        contenedorMensajeGano.add("ocultar");
+    }, 2000)
 
-    imgComputadora.src = "./images/" + eleccionPC + ".png";
-    if (
-    (eleccionJugador === "piedra" && eleccionPC === "tijera") || 
-    (eleccionJugador === "tijera" && eleccionPC === "papel") ||
-    (eleccionJugador === "papel" && eleccionPC === "piedra") 
-    ) {
-        ganaJugador();
-    } else if (
-        (eleccionPC === "piedra" && eleccionJugador === "tijera") || 
-        (eleccionPC === "tijera" && eleccionJugador === "papel") ||
-        (eleccionPC === "papel" && eleccionJugador === "piedra") 
-    ) {
-        ganaComputadora();
-    } else {
-        empate();
-    }
     mensaje.classList.remove("ocultar");
+    contenedorMensajeGano.innerText = "Eligiendo..."
     contenedorEleccionJugador.innerText = eleccionJugador;
     contenedorEleccionPC.innerText = eleccionPC;
 
@@ -57,7 +76,7 @@ function iniciarTurno (e) {
             instrucciones.innerText = "Ganaste la partida, ¡Felicitaciones! 🤓"
         }
         if (puntosPC === 3) {
-            instrucciones.innerText = "Perdiste contra la maquina 😢"
+            instrucciones.innerText = "Perdiste 😢"
         }
         instrucciones.classList.remove("ocultar")
         elegirArma.classList.add("ocultar");
@@ -76,7 +95,7 @@ function ganaJugador() {
 function ganaComputadora() {
     puntosPC++
     contenedorPuntosPC.innerText = puntosPC;
-    contenedorMensajeGano.innerText = "La maquina gano 1 punto 🥵";
+    contenedorMensajeGano.innerText = "La máquina ganó 1 punto 🥵";
 }
 
 function empate() {
