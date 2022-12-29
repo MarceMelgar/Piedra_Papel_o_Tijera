@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --clr-black: #000;
+    --clr-gray: rgb(144, 144, 144);
+    --clr-lightgray: rgb(205, 205, 205);
+    --clr-white: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.ocultar {
+    display: none;
+}
+
+img {
+    width: 40%;
+    margin-block: .5rem;
+}
+
+@media screen and (max-width: 576px) {
+    img {
+        width: 80%;
+    }
+}
+
+div.elecciones img {
+    width: 40%;
+    margin-block: .5rem;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--clr-lightgray);
+    color: var(--clr-black);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    color: var(--clr-white);
+    background-color: var(--clr-black);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* .instrucciones {
+    margin-bottom: 2rem;
+} */
+
+.marcador {
+    background-color: var(--clr-black);
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--clr-lightgray);
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.marcador .nombre {
+    position: absolute;
+    color: var(--clr-black);
+    background-color: var(--clr-white); 
+    border-radius: .5rem;
+    line-height: 1;
+    padding: .8rem;
+}
+
+.marcador .nombre-jugador {
+    right: 115%;
+}
+
+.marcador .nombre-computadora {
+    left: 115%;
+}
+
+.puntos {
+    display: flex;
+    color: var(--clr-white);
+    gap: 2px;
+}
+
+.elegir-arma {
+    margin-bottom: 2rem;
+}
+
+.elegir-arma h3 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.armas {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.arma {
+    width: 35%;
+    font-size: 2rem;
+    background-color: var(--clr-white);
+    padding: .5rem 1rem .5rem;
+    border: 0px;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.vl {
+    border-left: 2px solid rgb(0, 0, 0);
+    height: 100px;
+}
+
+.mensaje {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    line-height: 2.1;
+}
+
+.mensaje .elecciones {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+}
+
+.mensaje .eleccion {
+    background-color: var(--clr-black);
+    color: var(--clr-white);
+    padding: .3rem;
+    border-radius: .3rem;
+}
+
+.btn {
+    font-size: 1.2rem;
+    background-color: var(--clr-black);
+    color: var(--clr-lightgray);
+    border-radius: .3rem;
+    padding: .8rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    font-size: 1.2rem;
+    background-color: var(--clr-black);
+    color: #fff;
+}
+
+h4 {
+    margin-top: 2rem;
+}
